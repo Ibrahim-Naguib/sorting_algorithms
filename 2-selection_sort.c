@@ -1,6 +1,21 @@
 #include "sort.h"
 
 /**
+ * swap - Swaps the values of two integers.
+ * @a: Pointer to the first integer.
+ * @b: Pointer to the second integer.
+ *
+ * Return: No return value.
+ */
+
+void swap(int *a, int *b)
+{
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+/**
  * selection_sort - Sorts an array of ints using the Selection Sort algorithm.
  * @array: The array to be sorted.
  * @size: The size of the array.
@@ -10,7 +25,8 @@
 
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j, min, tmp;
+	size_t i, j;
+	int min;
 
 	if (array == NULL || size < 2)
 		return;
@@ -25,9 +41,7 @@ void selection_sort(int *array, size_t size)
 				min = j;
 			}
 		}
-		tmp = array[i];
-		array[i] = array[min];
-		array[min] = tmp;
+		swap(&array[min], &array[i]);
 		print_array(array, size);
 	}
 }
